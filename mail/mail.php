@@ -2,7 +2,7 @@
 if (isset($_POST['submit'])) {
 
     // Define recipient email (admins will receive the form data)
-    $email_to = "4exult@gmail.com, gchauhan.dm@gmail.com, himanshu.lifelinkr@gmail.com, leads@lifelinkr.com, Srishti.lifelinkr@gmail.com";
+    $email_to = "4exult@gmail.com, kushk4998@gmail.com, gchauhan.dm@gmail.com, himanshu.lifelinkr@gmail.com, leads@lifelinkr.com, Srishti.lifelinkr@gmail.com";
     // $email_to = "himanshu.lifelinkr@gmail.com"; // Admin emails
     $email_subject = "Query from LifeLinkr.com Calender Page";
 
@@ -16,11 +16,16 @@ if (isset($_POST['submit'])) {
     $using_software = $_POST['is_using_software'];
     $selected_date = $_POST['selected_date']; // required
     $selected_time = $_POST['selected_time']; // required
+    $selected_time_user = $_POST['selected_time_user']; // required
+    $selected_time_zone = $_POST['time_zone']; // required
     $message = $_POST['message'];
     $guest_emails = $_POST['invities']; // Guest emails entered by the user
 
     // Combine date and time
     $selected_date_time = $selected_date . ' ' . $selected_time;
+
+    // combine date and time for user
+    $selected_date_time_user = $selected_date . ' ' . $selected_time_user;
 
     // Calculate Google Calendar event start and end time
     $start_date_time = date('Ymd\THis', strtotime($selected_date_time));
@@ -49,7 +54,7 @@ if (isset($_POST['submit'])) {
         <p>Thank you for scheduling a demo with LifeLinkr! We’re delighted to connect with you and demonstrate how our software can streamline your clinic’s operations with features like robust data security, one-click automation and effortless data migration.</p>
         <p>Here are the details of your demo:</p>
         <p><strong>Date:</strong> " . clean_string($selected_date) . "</p>
-        <p><strong>Time:</strong> " . clean_string($selected_time) . "</p>
+        <p><strong>Time:</strong> " . clean_string($selected_time_user) . "</p>
         <p><strong>Your Email:</strong> " . clean_string($company_email) . "</p>
         <p><strong>Guest Invitees:</strong> " . clean_string($guest_emails) . "</p>
         <p>To make it easier to manage your schedule, you can add this event to your Google Calendar by clicking below:</p>
@@ -85,14 +90,14 @@ if (isset($_POST['submit'])) {
 
     // Send email to the user
     
-    if (@mail($company_email, "Your LifeLinkr Demo Schedule @ $selected_date_time (Indian Standard Time)", $email_message_user, $headers)) {
+    if (@mail($company_email, "Your LifeLinkr Demo Schedule @ $selected_date_time_user ($selected_time_zone)", $email_message_user, $headers)) {
         // Optionally send email to guest invitees
         if (!empty($guest_emails)) {
             $guest_email_array = explode(',', $guest_emails);
             foreach ($guest_email_array as $guest_email) {
                 $guest_email = trim($guest_email);
                 // Send the same email to each guest
-                mail($guest_email, "Your LifeLinkr Demo Schedule @ $selected_date_time (Indian Standard Time)", $email_message_user, $headers);
+                mail($guest_email, "Your LifeLinkr Demo Schedule @ $selected_date_time_user ($selected_time_zone)", $email_message_user, $headers);
             }
         }
     } else {

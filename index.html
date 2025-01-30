@@ -79,7 +79,9 @@
 
             <div class="time_date_info hide-in-mbl" style="padding-left: 1px">
               <img src="images/planet-earth.webp" alt="" />
-              Indian Standard Time
+              <p style="font-size: 13px" class="time_zone">
+                Indian Standard Time
+              </p>
             </div>
           </div>
         </div>
@@ -183,9 +185,79 @@
                       <p>Time Zone</p>
                       <div class="time_option">
                         <img src="images/globe-earth.webp" alt="" />
-                        <select>
-                          <option>Indian Standard Time</option>
-                          <option>Europion Standard Time</option>
+                        <select id="timezoneSelect">
+                          <option value="0">
+                            IST (Indian Standard Time, UTC+5:30)
+                          </option>
+                          <option value="-5:30">
+                            UTC (Greenwich Mean Time, UTC+0:00)
+                          </option>
+                          <option value="-4:30">
+                            CET (Central European Time, UTC+1:00)
+                          </option>
+                          <option value="-3:30">
+                            EET (Eastern European Time, UTC+2:00)
+                          </option>
+                          <option value="-2:30">
+                            MSK (Moscow Standard Time, UTC+3:00)
+                          </option>
+                          <option value="-2:00">
+                            IRST (Iran Standard Time, UTC+3:30)
+                          </option>
+                          <option value="-1:30">
+                            GST (Gulf Standard Time, UTC+4:00)
+                          </option>
+                          <option value="-1:00">
+                            AFT (Afghanistan Time, UTC+4:30)
+                          </option>
+                          <option value="0:30">
+                            PKT (Pakistan Standard Time, UTC+5:00)
+                          </option>
+                          <option value="1:00">
+                            BST (Bangladesh Standard Time, UTC+6:00)
+                          </option>
+                          <option value="2:30">
+                            ICT (Indochina Time, UTC+7:00)
+                          </option>
+                          <option value="3:30">
+                            CST (China Standard Time, UTC+8:00)
+                          </option>
+                          <option value="4:30">
+                            JST (Japan Standard Time, UTC+9:00)
+                          </option>
+                          <option value="5:30">
+                            AEST (Australian Eastern Standard Time, UTC+10:00)
+                          </option>
+                          <option value="8:30">
+                            NZST (New Zealand Standard Time, UTC+13:00)
+                          </option>
+                          <option value="-7:30">
+                            NST (Newfoundland Standard Time, UTC-3:30)
+                          </option>
+                          <option value="-8:30">
+                            AST (Atlantic Standard Time, UTC-4:00)
+                          </option>
+                          <option value="-9:00">
+                            EST (Eastern Standard Time, UTC-5:00)
+                          </option>
+                          <option value="-10:00">
+                            CST (Central Standard Time, UTC-6:00)
+                          </option>
+                          <option value="-11:00">
+                            MST (Mountain Standard Time, UTC-7:00)
+                          </option>
+                          <option value="-12:00">
+                            PST (Pacific Standard Time, UTC-8:00)
+                          </option>
+                          <option value="-13:00">
+                            AKST (Alaska Standard Time, UTC-9:00)
+                          </option>
+                          <option value="-14:00">
+                            HST (Hawaii Standard Time, UTC-10:00)
+                          </option>
+                          <option value="-15:30">
+                            BIT (Baker Island Time, UTC-12:00)
+                          </option>
                         </select>
                       </div>
                     </div>
@@ -194,48 +266,7 @@
                     <div class="popup_cal_selected-date">
                       Saturday 21 Dec, 2024
                     </div>
-                    <!-- <div class="popup_cal_time-slots-section">
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">08:30PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">09:00PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">10:00PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">10:30PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">11:00PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">11:30PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">12:00PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">12:30PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">01:00PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                        <div class="popup_cal_button-group">
-                          <div class="popup_cal_time-slot-selected">01:30PM</div>
-                          <button class="popup_cal_next-button">Next</button>
-                        </div>
-                      </div> -->
+
                     <div class="popup_cal_time-slots-section">
                       <div class="popup_cal_button-group">
                         <div
@@ -294,6 +325,20 @@
               type="text"
               name="selected_time"
               class="selected_time_Input"
+              hidden=""
+              style="display: none"
+            />
+            <input
+              type="text"
+              name="selected_time_user"
+              class="selected_time_Input_user"
+              hidden=""
+              style="display: none"
+            />
+            <input
+              type="text"
+              name="time_zone"
+              class="selected_time_zone"
               hidden=""
               style="display: none"
             />
@@ -407,7 +452,9 @@
               By proceeding, you confirm that you have read and agree to
               Calendly's Terms of Use and Privacy Notice.
             </div> -->
-              <button type="submit" name="submit">Schedule Demo</button>
+              <button id="submit_btn" type="submit" name="submit">
+                Schedule Demo
+              </button>
             </div>
           </form>
         </div>
