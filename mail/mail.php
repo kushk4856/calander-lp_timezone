@@ -36,6 +36,15 @@ if (isset($_POST['submit'])) {
     $calendar_url = "https://www.google.com/calendar/render?action=TEMPLATE&text=Invitation:%20LifeLinkr%20IVF%20Software%20Demo%20|%20" . urlencode($clinic_name) . "%20|%20" . urlencode($selected_date) . ",%20" . urlencode($selected_time) . "%20(Indian%20Standard%20Time)&dates=$start_date_time/$end_date_time&details=Details%20from%20your%20form&location=Clinic%20Location";
 
 
+      // Calculate Google Calendar event start and end time for user
+      $start_date_time_user = date('Ymd\THis', strtotime($selected_date_time_user));
+      $end_date_time_user = date('Ymd\THis', strtotime($selected_date_time_user . ' +1 hour'));
+
+    // Prepare Google Calendar link for user
+    // $calendar_url_user = "https://www.google.com/calendar/render?action=TEMPLATE&text=Meeting%20Schedule%20&dates=$start_date_time/$end_date_time&details=Details%20from%20your%20form&location=Clinic%20Location";
+    $calendar_url_user = "https://www.google.com/calendar/render?action=TEMPLATE&text=Invitation:%20LifeLinkr%20IVF%20Software%20Demo%20|%20" . urlencode($clinic_name) . "%20|%20" . urlencode($selected_date) . ",%20" . urlencode($selected_time_user) . "%20($selected_time_zone)&dates=$start_date_time_user/$end_date_time_user&details=Details%20from%20your%20form&location=Clinic%20Location";
+
+
     // Retrieve the full URL of the referring page
     $full_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'N/A';
 
@@ -58,7 +67,7 @@ if (isset($_POST['submit'])) {
         <p><strong>Your Email:</strong> " . clean_string($company_email) . "</p>
         <p><strong>Guest Invitees:</strong> " . clean_string($guest_emails) . "</p>
         <p>To make it easier to manage your schedule, you can add this event to your Google Calendar by clicking below:</p>
-        <br><a href='$calendar_url' style='display: inline-block; padding: 10px 20px; font-size: 16px; color: white; background-color: #4285F4; text-decoration: none; border-radius: 5px; margin-top:-15px; margin-bottom:15px;'>Add to Google Calendar</a>
+        <br><a href='$calendar_url_user' style='display: inline-block; padding: 10px 20px; font-size: 16px; color: white; background-color: #4285F4; text-decoration: none; border-radius: 5px; margin-top:-15px; margin-bottom:15px;'>Add to Google Calendar</a>
         <p>Our team will reach out to you shortly to understand your clinic’s specific requirements and ensure the demo is tailored to your needs.</p>
         <p>If you have any questions or require any changes to your demo schedule, feel free to reply to this email or contact us directly.</p>
         <p>We look forward to helping you discover how LifeLinkr can empower your clinic!</p>

@@ -78,10 +78,12 @@
             </div>
 
             <div class="time_date_info hide-in-mbl" style="padding-left: 1px">
-              <img src="images/planet-earth.webp" alt="" />
-              <p style="font-size: 13px" class="time_zone">
-                Indian Standard Time
-              </p>
+              <img
+                src="images/planet-earth.webp"
+                alt=""
+                style="align-self: flex-start"
+              />
+              <p class="time_zone">Indian Standard Time</p>
             </div>
           </div>
         </div>
@@ -186,78 +188,112 @@
                       <div class="time_option">
                         <img src="images/globe-earth.webp" alt="" />
                         <select id="timezoneSelect">
-                          <option value="0">
-                            IST (Indian Standard Time, UTC+5:30)
-                          </option>
-                          <option value="-5:30">
-                            UTC (Greenwich Mean Time, UTC+0:00)
-                          </option>
-                          <option value="-4:30">
-                            CET (Central European Time, UTC+1:00)
-                          </option>
-                          <option value="-3:30">
-                            EET (Eastern European Time, UTC+2:00)
-                          </option>
-                          <option value="-2:30">
-                            MSK (Moscow Standard Time, UTC+3:00)
-                          </option>
-                          <option value="-2:00">
-                            IRST (Iran Standard Time, UTC+3:30)
-                          </option>
-                          <option value="-1:30">
-                            GST (Gulf Standard Time, UTC+4:00)
-                          </option>
-                          <option value="-1:00">
-                            AFT (Afghanistan Time, UTC+4:30)
-                          </option>
-                          <option value="0:30">
-                            PKT (Pakistan Standard Time, UTC+5:00)
-                          </option>
-                          <option value="1:00">
-                            BST (Bangladesh Standard Time, UTC+6:00)
-                          </option>
-                          <option value="2:30">
-                            ICT (Indochina Time, UTC+7:00)
-                          </option>
-                          <option value="3:30">
-                            CST (China Standard Time, UTC+8:00)
-                          </option>
-                          <option value="4:30">
-                            JST (Japan Standard Time, UTC+9:00)
-                          </option>
-                          <option value="5:30">
-                            AEST (Australian Eastern Standard Time, UTC+10:00)
-                          </option>
-                          <option value="8:30">
-                            NZST (New Zealand Standard Time, UTC+13:00)
-                          </option>
-                          <option value="-7:30">
-                            NST (Newfoundland Standard Time, UTC-3:30)
-                          </option>
-                          <option value="-8:30">
-                            AST (Atlantic Standard Time, UTC-4:00)
-                          </option>
-                          <option value="-9:00">
-                            EST (Eastern Standard Time, UTC-5:00)
-                          </option>
-                          <option value="-10:00">
-                            CST (Central Standard Time, UTC-6:00)
-                          </option>
-                          <option value="-11:00">
-                            MST (Mountain Standard Time, UTC-7:00)
-                          </option>
-                          <option value="-12:00">
-                            PST (Pacific Standard Time, UTC-8:00)
-                          </option>
-                          <option value="-13:00">
-                            AKST (Alaska Standard Time, UTC-9:00)
-                          </option>
-                          <option value="-14:00">
-                            HST (Hawaii Standard Time, UTC-10:00)
-                          </option>
-                          <option value="-15:30">
-                            BIT (Baker Island Time, UTC-12:00)
-                          </option>
+                          <!-- INDIAN SUBCONTINENT -->
+                          <optgroup label="Indian Subcontinent">
+                            <option value="0,0">
+                              IST (Indian Standard Time, UTC+5:30)
+                            </option>
+                            <option value="-0:30,-0:30">
+                              PKT (Pakistan Time, UTC+5:00)
+                            </option>
+                            <option value="+0:15,+0:15">
+                              NPT (Nepal Time, UTC+5:45)
+                            </option>
+                            <option value="+0:30,+0:30">
+                              BST (Bangladesh Time, UTC+6:00)
+                            </option>
+                          </optgroup>
+
+                          <!-- ASIA & OCEANIA -->
+                          <optgroup label="Asia & Oceania">
+                            <option value="+1:00,+1:00">
+                              MMT (Myanmar Time, UTC+6:30)
+                            </option>
+                            <option value="+1:30,+1:30">
+                              ICT (Indochina Time, UTC+7:00)
+                            </option>
+                            <option value="+2:30,+2:30">
+                              CST (China Time, UTC+8:00)
+                            </option>
+                            <option value="+3:30,+3:30">
+                              JST (Japan Time, UTC+9:00)
+                            </option>
+                            <option value="+4:00,+5:00">
+                              ACST (Australian Central Time, UTC+9:30/10:30*)
+                            </option>
+                            <option value="+4:30,+5:30">
+                              AEST (Australian Eastern Time, UTC+10:00/11:00*)
+                            </option>
+                            <option value="+6:30,+7:30">
+                              NZST (New Zealand Time, UTC+12:00/13:00*)
+                            </option>
+                          </optgroup>
+
+                          <!-- EUROPE, AFRICA & MIDDLE EAST -->
+                          <optgroup label="Europe, Africa & Middle East">
+                            <option value="-5:30,-4:30">
+                              GMT (Greenwich Mean Time, UTC+0/+1*)
+                            </option>
+                            <option value="-4:30,-3:30">
+                              CET (Central European Time, UTC+1/+2*)
+                            </option>
+                            <option value="-3:30,-2:30">
+                              EET (Eastern European Time, UTC+2/+3*)
+                            </option>
+                            <option value="-2:30,-2:30">
+                              MSK (Moscow Time, UTC+3)
+                            </option>
+                            <option value="-2:00,-1:00">
+                              IRST (Iran Time, UTC+3:30/+4:30*)
+                            </option>
+                            <option value="-1:30,-1:30">
+                              GST (Gulf Time, UTC+4)
+                            </option>
+                            <option value="-1:00,-1:00">
+                              AFT (Afghanistan Time, UTC+4:30)
+                            </option>
+                          </optgroup>
+
+                          <!-- AMERICAS -->
+                          <optgroup label="Americas">
+                            <option value="-10:30,-9:30">
+                              HST (Hawaii Time, UTC-10/-9*)
+                            </option>
+                            <option value="-9:30,-8:30">
+                              AKST (Alaska Time, UTC-9/-8*)
+                            </option>
+                            <option value="-8:30,-7:30">
+                              PST (Pacific Time, UTC-8/-7*)
+                            </option>
+                            <option value="-7:30,-6:30">
+                              MST (Mountain Time, UTC-7/-6*)
+                            </option>
+                            <option value="-6:30,-5:30">
+                              CST (Central Time, UTC-6/-5*)
+                            </option>
+                            <option value="-5:30,-4:30">
+                              EST (Eastern Time, UTC-5/-4*)
+                            </option>
+                            <option value="-4:00,-3:00">
+                              AST (Atlantic Time, UTC-4/-3*)
+                            </option>
+                            <option value="-3:30,-2:30">
+                              NST (Newfoundland Time, UTC-3:30/-2:30*)
+                            </option>
+                          </optgroup>
+
+                          <!-- SPECIAL OFFSETS -->
+                          <optgroup label="Special Cases">
+                            <option value="-7:00,-7:00">
+                              ART (Argentina Time, UTC-3)
+                            </option>
+                            <option value="-17:30,-17:30">
+                              BIT (Baker Island Time, UTC-12)
+                            </option>
+                            <option value="+7:15,+8:15">
+                              CHAST (Chatham Time, UTC+12:45/13:45*)
+                            </option>
+                          </optgroup>
                         </select>
                       </div>
                     </div>
