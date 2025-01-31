@@ -61,6 +61,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let selectedDate = new Date();
 
+  // ====== Display Current Date ======
+  const currentDate = new Date();
+  const options = {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  };
+
+  // dateInput.value = currentDate;
+
   // ====== Timezone Handling ======
   function adjustTime(
     originalHours,
@@ -110,6 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
       month: "long",
       day: "numeric",
     });
+
+    // console.log(dateInput.value);
 
     const isToday =
       selected.getDate() === now.getDate() &&
@@ -262,6 +275,19 @@ document.addEventListener("DOMContentLoaded", function () {
     calendarDays.innerHTML = "";
     currentMonthDisplay.textContent = `${months[currentMonth]} ${currentYear}`;
 
+    // Disable previous month button if it's the current month
+    const currentMonthCheck = new Date();
+    if (
+      currentMonth === currentMonthCheck.getMonth() &&
+      currentYear === currentMonthCheck.getFullYear()
+    ) {
+      prevMonthBtn.disabled = true;
+      prevMonthBtn.classList.add("popup_cal_disabled");
+    } else {
+      prevMonthBtn.disabled = false;
+      prevMonthBtn.classList.remove("popup_cal_disabled");
+    }
+
     for (let i = 0; i < (firstDay + 6) % 7; i++) {
       const day = document.createElement("div");
       day.classList.add("popup_cal_day", "popup_cal_disabled");
@@ -320,11 +346,21 @@ document.addEventListener("DOMContentLoaded", function () {
     addGuestInput.style.display = "flex";
   });
 
+  selectedDateDisplay.forEach((el) => {
+    el.textContent = currentDate.toLocaleDateString("en-IN", options);
+    // console.log(currentDate.toLocaleDateString("en-IN", options));
+  });
+
   // Previous button functionality
   previousBtn.addEventListener("click", () => {
     calenderArea.style.display = "flex";
     modalForm.classList.remove("active");
     previousBtn.style.display = "none";
+
+    selectedDateDisplay.forEach((el) => {
+      el.textContent = currentDate.toLocaleDateString("en-IN", options);
+      // console.log(currentDate.toLocaleDateString("en-IN", options));
+    });
   });
 
   prevMonthBtn.addEventListener("click", () => {
